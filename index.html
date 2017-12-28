@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Cliente</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  
+  <link rel='stylesheet prefetch' href='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.css'>
+<link rel='stylesheet prefetch' href='https://material.angularjs.org/1.1.5/docs.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div ng-controller="DemoCtrl" layout="column" ng-cloak="" class="md-inline-form inputdemoBasicUsage" ng-app="MyApp">
+
+      <md-toolbar class="md-warn">
+          <div class="md-toolbar-tools">
+            <h3 class="md-flex">Cadastro de Clientes</h3>
+          </div>
+        </md-toolbar>
+
+  <md-content layout-padding="">
+    <div>
+      <form name="userForm">
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Nome</label>
+            <input ng-model="user.firstName">
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Sobrenome</label>
+            <input ng-model="theMax">
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+            <md-input-container md-no-float="" class="md-block" flex-gt-sm="">
+                <label>Endereço Residencial</label>
+              <input ng-model="user.address1">
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+              </div>
+
+            <md-input-container md-no-float="" class="md-block" flex-gt-sm="">
+                <label>Número</label>
+              <input ng-model="user.number1">
+            </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Cidade</label>
+            <input ng-model="user.city1">
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Estado</label>
+            <md-select ng-model="user.state1">
+              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                {{state.abbrev}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>CEP</label>
+            <input name="postalCode" ng-model="user.postalCode1" placeholder="1234578" required="" ng-pattern="/^[0-9]{8}$/" md-maxlength="8">
+            <div ng-messages="userForm.postalCode.$error" role="alert" multiple="">
+              <div ng-message="required" class="my-message">Você deve fornecer o CEP válido</div>
+              <div ng-message="pattern" class="my-message">O CEP informado não é válido.
+              </div>
+              <div ng-message="md-maxlength" class="my-message">
+                Número de caracteres excedido
+              </div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+            <md-input-container md-no-float="" class="md-block" flex-gt-sm="">
+                <label>Endereço Comercial</label>
+              <input ng-model="user.address2">
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm>
+                <!-- Spacer //-->
+              </div>
+
+            <md-input-container md-no-float="" class="md-block" flex-gt-sm="">
+                <label>Número</label>
+              <input ng-model="user.number2">
+            </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Cidade</label>
+            <input ng-model="user.city2">
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Estado</label>
+            <md-select ng-model="user.state2">
+              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                {{state.abbrev}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <div flex="5" hide-xs hide-sm>
+              <!-- Spacer //-->
+            </div>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>CEP</label>
+            <input name="postalCode" ng-model="user.postalCode2" placeholder="1234578" required="" ng-pattern="/^[0-9]{8}$/" md-maxlength="8">
+            <div ng-messages="userForm.postalCode.$error" role="alert" multiple="">
+              <div ng-message="required" class="my-message">Você deve fornecer o CEP válido</div>
+              <div ng-message="pattern" class="my-message">O CEP informado não é válido.
+              </div>
+              <div ng-message="md-maxlength" class="my-message">
+                Número de caracteres excedido
+              </div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Número do cartão de crédito</label>
+              <input name="social" ng-model="user.social" ng-pattern="/^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/" />
+                <div class="hint" ng-if="showHints">####-####-####-####</div>
+                <div ng-messages="userForm.social.$error" ng-if="!showHints">
+                  <div ng-message="pattern">####-####-####-#### - Entre com o número válido.</div>
+              </div>
+          </md-input-container>
+
+              <div flex="5" hide-xs hide-sm>
+                  <!-- Spacer //-->
+                </div>
+
+          <md-input-container class="md-block" flex-gt-sm>
+                  <label>Código de Segurança</label>
+                    <input name="segcod" ng-model="user.segcod" ng-pattern="/^[0-9]{3}$/" />
+                      <div class="hint" ng-if="showHints">###</div>
+                      <div ng-messages="userForm.segcod.$error" ng-if="!showHints">
+                        <div ng-message="pattern">### - Entre com o número válido.</div>
+                    </div>
+          </md-input-container>
+        </div>
+      </form>
+          <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+              <md-button class="md-raised">Enviar</md-button>
+            </section>
+    </div>
+  </md-content>
+
+</div>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+-->
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js'></script>
+<script src='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.5/angular-material.js'></script>  
+
+    <script  src="js/index.js"></script>
+
+</body>
+</html>
